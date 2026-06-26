@@ -1,0 +1,74 @@
+<!-- Empty state -->
+<view wx:if="{{isEmpty && !isFirstLoad}}" class="empty-state">
+  <text class="empty-icon">📋</text>
+  <text class="empty-text">还没有账单记录</text>
+  <view class="btn-primary" bindtap="onAddTap">添加第一笔</view>
+</view>
+
+<!-- Content -->
+<view wx:else>
+  <!-- Monthly overview card -->
+  <view class="card overview-card">
+    <view class="overview-header flex-between">
+      <text>{{monthLabel}} 收支概览</text>
+      <text wx:if="{{!isEmpty}}" class="manage-btn" bindtap="onToggleSelectMode">
+        {{selectMode ? '取消' : '管理'}}
+      </text>
+    </view>
+    <view class="overview-row">
+      <view class="overview-item">
+        <text class="overview-label">收入</text>
+        <text class="overview-value income">{{totalIncomeStr}}</text>
+      </view>
+      <view class="overview-divider"></view>
+      <view class="overview-item">
+        <text class="overview-label">支出</text>
+        <text class="overview-value expense">{{totalExpenseStr}}</text>
+      </view>
+      <view class="overview-divider"></view>
+      <view class="overview-item">
+        <text class="overview-label">结余</text>
+        <text class="overview-value {{balanceClass}}">{{balanceStr}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Bill list -->
+  <scroll-view
+    class="bill-scroll {{selectMode ? 'bill-scroll-select' : ''}}"
+    scroll-y
+    bindscrolltolower="loadMore"
+    lower-threshold="200"
+    enable-back-to-top
+  >
+    <view wx:for="{{bills}}" wx:key="id" wx:for-index="i">
+      <view wx:if="{{i < displayedCount}}" class="card bill-item" data-id="{{item.id}}" bindtap="onItemTap" bindlongpress="onLongPress">
+        <view wx:if="{{selectMode}}" class="checkbox {{selectedIds[item.id] ? 'checkbox-checked' : ''}}">
+          <text wx:if="{{selectedIds[item.id]}}">✓</text>
+        </view>
+        <view class="bill-left">
+          <text class="bill-category">{{item.category || 'Other'}}</text>
+          <text wx:if="{{item.note}}" class="bill-note">{{item.note}}</text>
+          <text class="bill-date">{{item.date}}</text>
+        </view>
+        <view class="bill-right">
+          <text class="bill-amount {{item.typeClass}}">{{item.amountStr}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{hasMore}}" class="load-more-tip">上滑加载更多</view>
+    <view wx:else class="load-more-tip">— 共 {{bills.length}} 条记录 —</view>
+  </scroll-view>
+
+  <!-- FAB -->
+  <view wx:if="{{!selectMode}}" class="fab" bindtap="onAddTap">
+    <text class="fab-icon">+</text>
+  </view>
+
+  <!-- Batch delete bar -->
+  <view wx:if="{{selectMode}}" class="batch-bar">
+    <view class="btn-outline batch-cancel" bindtap="onToggleSelectMode">取消</view>
+    <text class="batch-count">已选 {{selectedCount}} 条</text>
+    <view class="btn-danger batch-delete {{selectedCount === 0 ? 'btn-disabled' : ''}}" bindtap="onBatchDelete">删除</view>
+  </view>
+</view>

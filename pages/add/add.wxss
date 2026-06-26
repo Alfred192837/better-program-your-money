@@ -1,0 +1,139 @@
+.form-container {
+  padding: 20rpx;
+}
+
+.form-group {
+  margin-bottom: 32rpx;
+  background: var(--card);
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  margin-bottom: 16rpx;
+}
+
+.form-input {
+  font-size: 32rpx;
+  padding: 16rpx 0;
+  border-bottom: 2rpx solid var(--border);
+}
+
+.amount-input {
+  font-size: 48rpx;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 4rpx;
+}
+
+.form-error {
+  color: var(--expense);
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+
+.form-picker {
+  font-size: 32rpx;
+  padding: 16rpx 0;
+  color: var(--text-primary);
+}
+
+.form-textarea {
+  font-size: 28rpx;
+  min-height: 120rpx;
+  padding: 16rpx 0;
+  width: 100%;
+}
+
+/* Type switch */
+.type-switch {
+  display: flex;
+  flex-direction: row;
+  border-radius: 8rpx;
+  overflow: hidden;
+  border: 2rpx solid var(--border);
+}
+
+.type-tab {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  font-size: 30rpx;
+}
+
+.type-inactive {
+  background-color: var(--bg);
+  color: var(--text-secondary);
+}
+
+.type-expense-active {
+  background-color: var(--expense);
+  color: #fff;
+}
+
+.type-income-active {
+  background-color: var(--income);
+  color: #fff;
+}
+
+/* Favorite tags */
+.fav-tags {
+  margin-top: 16rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.fav-label {
+  font-size: 22rpx;
+  color: var(--primary);
+  margin-right: 8rpx;
+  font-weight: 600;
+}
+
+.fav-chip {
+  font-size: 24rpx;
+  background: var(--primary);
+  color: #fff;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  margin: 4rpx 6rpx;
+}
+
+/* All category suggestions */
+.category-suggestions {
+  margin-top: 16rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.suggest-label {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  margin-right: 8rpx;
+}
+
+.suggest-tag {
+  font-size: 22rpx;
+  background: var(--bg);
+  color: var(--primary);
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  margin: 4rpx 6rpx;
+  border: 2rpx solid var(--primary);
+}
+
+/* Save */
+.save-area {
+  padding: 40rpx 0;
+}
+
+.save-btn {
+  width: 100%;
+  padding: 28rpx;
+  font-size: 32rpx;
+  border-radius: 12rpx;
+}

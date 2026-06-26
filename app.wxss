@@ -1,0 +1,86 @@
+page {
+  --primary: #07C160;
+  --expense: #E74C3C;
+  --income: #07C160;
+  --bg: #F5F5F5;
+  --card: #FFFFFF;
+  --text-primary: #333333;
+  --text-secondary: #999999;
+  --border: #E8E8E8;
+
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-size: 28rpx;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+}
+
+/* Card */
+.card {
+  background: var(--card);
+  border-radius: 16rpx;
+  margin: 20rpx;
+  padding: 24rpx;
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 40rpx;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  color: var(--text-secondary);
+  font-size: 28rpx;
+  margin-bottom: 32rpx;
+}
+
+/* Common button */
+.btn-primary {
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 8rpx;
+  padding: 20rpx 48rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2rpx solid var(--primary);
+  border-radius: 8rpx;
+  padding: 20rpx 48rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+/* Flex utilities */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}

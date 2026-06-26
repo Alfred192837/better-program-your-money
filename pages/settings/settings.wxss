@@ -1,0 +1,130 @@
+.section {
+  margin-bottom: 32rpx;
+}
+
+.section-title {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin: 20rpx 20rpx 12rpx;
+}
+
+.setting-item {
+  padding: 28rpx 24rpx;
+}
+
+.setting-label {
+  font-size: 30rpx;
+  display: block;
+  margin-bottom: 6rpx;
+}
+
+.setting-desc {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.export-btn {
+  padding: 14rpx 32rpx;
+  font-size: 26rpx;
+}
+
+
+/* Categories */
+.cat-item {
+  padding: 20rpx 24rpx;
+}
+
+.cat-row {
+  width: 100%;
+}
+
+.cat-name {
+  font-size: 28rpx;
+}
+
+.cat-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.cat-action {
+  font-size: 24rpx;
+  color: var(--primary);
+  padding: 4rpx 8rpx;
+}
+
+.cat-delete {
+  color: var(--expense);
+}
+
+.cat-edit-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.cat-edit-input {
+  flex: 1;
+  font-size: 28rpx;
+  padding: 8rpx 12rpx;
+  border: 2rpx solid var(--primary);
+  border-radius: 6rpx;
+}
+
+.cat-edit-save {
+  font-size: 26rpx;
+  color: var(--primary);
+}
+
+.cat-edit-cancel {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.empty-tip {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 32rpx;
+}
+
+.add-cat-btn {
+  text-align: center;
+  padding: 24rpx;
+  color: var(--primary);
+  font-size: 26rpx;
+  background: var(--card);
+  margin: 0 20rpx;
+  border-radius: 16rpx;
+}
+
+/* Tabs */
+.tab-switch {
+  display: flex;
+  flex-direction: row;
+  background: var(--card);
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin: 0 20rpx;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx;
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+.tab-active {
+  color: var(--primary);
+  font-weight: 600;
+  border-bottom: 4rpx solid var(--primary);
+}
+
+.empty-desc {
+  display: block;
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  margin-top: 8rpx;
+}

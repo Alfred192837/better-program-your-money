@@ -1,0 +1,91 @@
+<view class="form-container">
+  <!-- Amount -->
+  <view class="form-group">
+    <view class="form-label">金额</view>
+    <input
+      class="form-input amount-input"
+      type="digit"
+      placeholder="0.00"
+      value="{{amount}}"
+      bindinput="onAmountInput"
+      focus
+    />
+    <view wx:if="{{amountError}}" class="form-error">{{amountError}}</view>
+  </view>
+
+  <!-- Type -->
+  <view class="form-group">
+    <view class="form-label">类型</view>
+    <view class="type-switch">
+      <view
+        class="type-tab {{type === 0 ? 'type-expense-active' : 'type-inactive'}}"
+        bindtap="onTypeChange"
+        data-value="0"
+      ><text>支出</text></view>
+      <view
+        class="type-tab {{type === 1 ? 'type-income-active' : 'type-inactive'}}"
+        bindtap="onTypeChange"
+        data-value="1"
+      ><text>收入</text></view>
+    </view>
+  </view>
+
+  <!-- Category -->
+  <view class="form-group">
+    <view class="form-label">分类</view>
+    <input
+      class="form-input"
+      type="text"
+      placeholder="输入分类名称"
+      value="{{category}}"
+      bindinput="onCategoryInput"
+      bindblur="onCategoryBlur"
+    />
+    <!-- Favorite tag chips -->
+    <view wx:if="{{favoriteTags.length > 0}}" class="fav-tags">
+      <text class="fav-label">常用：</text>
+      <text
+        wx:for="{{favoriteTags}}"
+        wx:key="*this"
+        class="fav-chip"
+        data-name="{{item}}"
+        bindtap="onCategoryInput"
+      >{{item}}</text>
+    </view>
+    <!-- All category suggestions -->
+    <view wx:elif="{{allCategoryNames.length > 0}}" class="category-suggestions">
+      <text class="suggest-label">已有分类：</text>
+      <block wx:for="{{allCategoryNames}}" wx:key="*this">
+        <text class="suggest-tag" data-name="{{item}}" bindtap="onCategoryInput">{{item}}</text>
+      </block>
+    </view>
+  </view>
+
+  <!-- Date -->
+  <view class="form-group">
+    <view class="form-label">日期</view>
+    <picker mode="date" value="{{date}}" bindchange="onDateChange">
+      <view class="form-picker">{{date}}</view>
+    </picker>
+  </view>
+
+  <!-- Note -->
+  <view class="form-group">
+    <view class="form-label">备注（可选）</view>
+    <textarea
+      class="form-textarea"
+      placeholder="添加备注..."
+      value="{{note}}"
+      bindinput="onNoteInput"
+      auto-height
+      maxlength="-1"
+    />
+  </view>
+
+  <!-- Save -->
+  <view class="save-area">
+    <button class="btn-primary save-btn" bindtap="onSave" loading="{{saving}}" disabled="{{saving}}">
+      {{isEdit ? '保存修改' : '保存记录'}}
+    </button>
+  </view>
+</view>

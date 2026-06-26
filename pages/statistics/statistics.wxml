@@ -1,0 +1,64 @@
+<!-- Month selector -->
+<view class="month-selector">
+  <view class="month-arrow" bindtap="onPrevMonth">〈</view>
+  <picker mode="multiSelector" range="{{[years, months]}}" value="{{[yearIndex, monthIndex]}}" bindchange="onMonthPickerChange">
+    <view class="month-label">{{monthLabel}}</view>
+  </picker>
+  <view class="month-arrow" bindtap="onNextMonth">〉</view>
+</view>
+
+<!-- Summary cards -->
+<view class="card summary-card">
+  <view class="summary-row">
+    <view class="summary-item">
+      <text class="summary-label">收入</text>
+      <text class="summary-value income">{{totalIncomeStr}}</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-label">支出</text>
+      <text class="summary-value expense">{{totalExpenseStr}}</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-label">结余</text>
+      <text class="summary-value {{balanceClass}}">{{balanceStr}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- Empty state -->
+<view wx:if="{{isEmpty}}" class="empty-state">
+  <text class="empty-icon">📊</text>
+  <text class="empty-text">本月暂无账单记录</text>
+</view>
+
+<!-- Category breakdown -->
+<view wx:else class="breakdown-section">
+  <view class="section-title">分类明细</view>
+  <view wx:for="{{breakdown}}" wx:key="name" class="card breakdown-item">
+    <view class="breakdown-header flex-between">
+      <text class="breakdown-name">{{item.name}}</text>
+      <view class="breakdown-amounts">
+        <text wx:if="{{item.hasExpense}}" class="expense break-amt">{{item.expenseStr}}</text>
+        <text wx:if="{{item.hasIncome}}" class="income break-amt">{{item.incomeStr}}</text>
+      </view>
+    </view>
+    <!-- Bar -->
+    <view class="bar-track">
+      <view
+        class="bar-expense {{item.incomeOnly ? '' : 'bar-left-radius'}}"
+        style="width: {{item.expenseBarWidth}}%"
+      ></view>
+      <view
+        class="bar-income {{item.expenseOnly ? '' : 'bar-right-radius'}}"
+        style="width: {{item.incomeBarWidth}}%"
+      ></view>
+    </view>
+    <view class="breakdown-percent">
+      <text wx:if="{{item.hasExpense}}" class="expense">{{item.expensePercent}}%</text>
+      <text wx:if="{{item.hasExpense && item.hasIncome}}"> / </text>
+      <text wx:if="{{item.hasIncome}}" class="income">{{item.incomePercent}}%</text>
+    </view>
+  </view>
+</view>

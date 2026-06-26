@@ -1,0 +1,99 @@
+<!-- Export section -->
+<view class="section">
+  <view class="section-title">数据管理</view>
+  <view class="card setting-item flex-between">
+    <view>
+      <text class="setting-label">导出全部账单为 CSV</text>
+      <text class="setting-desc">共 {{totalRecords}} 条记录</text>
+    </view>
+    <view class="btn-outline export-btn" bindtap="onExport">导出</view>
+  </view>
+</view>
+
+<!-- Tab switch -->
+<view class="section">
+  <view class="tab-switch">
+    <view class="tab-item {{activeTab === 'categories' ? 'tab-active' : ''}}" data-tab="categories" bindtap="onSwitchTab">全部分类</view>
+    <view class="tab-item {{activeTab === 'favorites' ? 'tab-active' : ''}}" data-tab="favorites" bindtap="onSwitchTab">常用标签</view>
+  </view>
+</view>
+
+<!-- All Categories -->
+<view wx:if="{{activeTab === 'categories'}}">
+  <view class="section">
+    <view class="section-title">支出分类</view>
+    <view wx:if="{{expenseCategories.length === 0}}" class="card empty-tip">暂无分类</view>
+    <view wx:for="{{expenseCategories}}" wx:key="*this" class="card cat-item">
+      <view wx:if="{{editingCategory && editingCategory.type === 'expense' && editingCategory.oldName === item}}" class="cat-edit-row">
+        <input class="cat-edit-input" value="{{editValue}}" bindinput="onEditInput" focus />
+        <text class="cat-edit-save" bindtap="onEditSave">保存</text>
+        <text class="cat-edit-cancel" bindtap="onEditCancel">取消</text>
+      </view>
+      <view wx:else class="flex-between cat-row">
+        <text class="cat-name">{{item}}</text>
+        <view class="cat-actions">
+          <text class="cat-action" data-type="expense" data-name="{{item}}" bindtap="onEditCategory">编辑</text>
+          <text class="cat-action cat-delete" data-type="expense" data-name="{{item}}" bindtap="onDeleteCategory">删除</text>
+        </view>
+      </view>
+    </view>
+    <view class="add-cat-btn" data-type="expense" bindtap="onAddCategory">
+      <text>+ 添加支出分类</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">收入分类</view>
+    <view wx:if="{{incomeCategories.length === 0}}" class="card empty-tip">暂无分类</view>
+    <view wx:for="{{incomeCategories}}" wx:key="*this" class="card cat-item">
+      <view wx:if="{{editingCategory && editingCategory.type === 'income' && editingCategory.oldName === item}}" class="cat-edit-row">
+        <input class="cat-edit-input" value="{{editValue}}" bindinput="onEditInput" focus />
+        <text class="cat-edit-save" bindtap="onEditSave">保存</text>
+        <text class="cat-edit-cancel" bindtap="onEditCancel">取消</text>
+      </view>
+      <view wx:else class="flex-between cat-row">
+        <text class="cat-name">{{item}}</text>
+        <view class="cat-actions">
+          <text class="cat-action" data-type="income" data-name="{{item}}" bindtap="onEditCategory">编辑</text>
+          <text class="cat-action cat-delete" data-type="income" data-name="{{item}}" bindtap="onDeleteCategory">删除</text>
+        </view>
+      </view>
+    </view>
+    <view class="add-cat-btn" data-type="income" bindtap="onAddCategory">
+      <text>+ 添加收入分类</text>
+    </view>
+  </view>
+</view>
+
+<!-- Favorite Tags -->
+<view wx:if="{{activeTab === 'favorites'}}">
+  <view class="section">
+    <view class="section-title">常用支出标签</view>
+    <view wx:if="{{favoriteExpenseTags.length === 0}}" class="card empty-tip">
+      <text>还没有常用标签</text>
+      <text class="empty-desc">在记账时使用过的分类会自动出现在这里</text>
+    </view>
+    <view wx:for="{{favoriteExpenseTags}}" wx:key="*this" class="card cat-item flex-between">
+      <text class="cat-name">{{item}}</text>
+      <text class="cat-action cat-delete" data-type="expense" data-name="{{item}}" bindtap="onRemoveFavorite">移除</text>
+    </view>
+    <view wx:if="{{favoriteExpenseTags.length > 0}}" class="add-cat-btn" data-type="expense" bindtap="onAddFavorite">
+      <text>+ 从分类中添加</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">常用收入标签</view>
+    <view wx:if="{{favoriteIncomeTags.length === 0}}" class="card empty-tip">
+      <text>还没有常用标签</text>
+      <text class="empty-desc">在记账时使用过的分类会自动出现在这里</text>
+    </view>
+    <view wx:for="{{favoriteIncomeTags}}" wx:key="*this" class="card cat-item flex-between">
+      <text class="cat-name">{{item}}</text>
+      <text class="cat-action cat-delete" data-type="income" data-name="{{item}}" bindtap="onRemoveFavorite">移除</text>
+    </view>
+    <view wx:if="{{favoriteIncomeTags.length > 0}}" class="add-cat-btn" data-type="income" bindtap="onAddFavorite">
+      <text>+ 从分类中添加</text>
+    </view>
+  </view>
+</view>

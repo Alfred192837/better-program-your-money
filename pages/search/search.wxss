@@ -1,0 +1,101 @@
+/* Filter card */
+.filter-card {
+  padding: 28rpx 24rpx;
+}
+
+.filter-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 0;
+  border-bottom: 2rpx solid var(--border);
+}
+
+.filter-label {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  width: 140rpx;
+}
+
+.filter-picker {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  text-align: right;
+  flex: 1;
+}
+
+.filter-input {
+  font-size: 28rpx;
+  text-align: right;
+  flex: 1;
+}
+
+.filter-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 20rpx;
+  margin-top: 24rpx;
+}
+
+.filter-btn {
+  width: 160rpx;
+  padding: 16rpx 0;
+  font-size: 28rpx;
+}
+
+/* Results */
+.result-scroll {
+  height: calc(100vh - 420rpx);
+}
+
+.bill-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx;
+}
+
+.bill-left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.bill-category {
+  font-size: 30rpx;
+  font-weight: 500;
+  margin-bottom: 6rpx;
+}
+
+.bill-note {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-bottom: 4rpx;
+}
+
+.bill-date {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+}
+
+.bill-right {
+  margin-left: 20rpx;
+}
+
+.bill-amount {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.income { color: var(--income); }
+.expense { color: var(--expense); }
+
+.load-more-tip {
+  text-align: center;
+  padding: 30rpx;
+  color: var(--text-secondary);
+  font-size: 24rpx;
+}

@@ -1,0 +1,60 @@
+<!-- Filter form -->
+<view class="card filter-card">
+  <view class="filter-row">
+    <text class="filter-label">开始日期</text>
+    <picker mode="date" value="{{startDate}}" bindchange="onStartDateChange">
+      <view class="filter-picker">{{startDate || '选择日期'}}</view>
+    </picker>
+  </view>
+  <view class="filter-row">
+    <text class="filter-label">结束日期</text>
+    <picker mode="date" value="{{endDate}}" bindchange="onEndDateChange">
+      <view class="filter-picker">{{endDate || '选择日期'}}</view>
+    </picker>
+  </view>
+  <view class="filter-row">
+    <text class="filter-label">关键词</text>
+    <input
+      class="filter-input"
+      type="text"
+      placeholder="搜索分类或备注"
+      value="{{keyword}}"
+      bindinput="onKeywordInput"
+    />
+  </view>
+  <view class="filter-actions">
+    <view class="btn-outline filter-btn" bindtap="onClear">清除</view>
+    <view class="btn-primary filter-btn" bindtap="onSearch">搜索</view>
+  </view>
+</view>
+
+<!-- Results -->
+<scroll-view wx:if="{{hasSearched}}" class="result-scroll" scroll-y bindscrolltolower="loadMore" lower-threshold="200">
+  <!-- Empty results -->
+  <view wx:if="{{isEmpty}}" class="empty-state">
+    <text class="empty-icon">🔍</text>
+    <text class="empty-text">没有找到匹配的记录</text>
+  </view>
+
+  <!-- Result list -->
+  <view wx:else>
+    <view wx:for="{{displayedResults}}" wx:key="id" class="card bill-item">
+      <view class="bill-left">
+        <text class="bill-category">{{item.category || 'Other'}}</text>
+        <text wx:if="{{item.note}}" class="bill-note">{{item.note}}</text>
+        <text class="bill-date">{{item.date}}</text>
+      </view>
+      <view class="bill-right">
+        <text class="bill-amount {{item.typeClass}}">{{item.amountStr}}</text>
+      </view>
+    </view>
+    <view wx:if="{{hasMore}}" class="load-more-tip">上滑加载更多</view>
+    <view wx:else class="load-more-tip">— 共 {{allResults.length}} 条结果 —</view>
+  </view>
+</scroll-view>
+
+<!-- Initial state (no search yet) -->
+<view wx:else class="empty-state">
+  <text class="empty-icon">📅</text>
+  <text class="empty-text">选择日期范围或输入关键词后，点击搜索</text>
+</view>

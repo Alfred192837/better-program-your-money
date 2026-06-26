@@ -1,0 +1,73 @@
+<!-- Create book dialog -->
+<view wx:if="{{showCreate}}" class="create-overlay">
+  <view class="create-dialog" catchtap="">
+    <view class="create-title">新建账本</view>
+    <input
+      class="create-input"
+      placeholder="输入账本名称"
+      value="{{newBookName}}"
+      bindinput="onNameInput"
+      focus
+    />
+    <view wx:if="{{existingNames.length > 0}}" class="tag-row">
+      <text class="tag-label">已有：</text>
+      <text wx:for="{{existingNames}}" wx:key="*this" class="tag-chip" data-name="{{item}}" bindtap="onTagTap">{{item}}</text>
+    </view>
+    <view class="create-actions">
+      <view class="btn-outline create-btn" bindtap="onCancelCreate">取消</view>
+      <view class="btn-primary create-btn {{newBookName ? '' : 'btn-disabled'}}" bindtap="onConfirmCreate">创建</view>
+    </view>
+  </view>
+</view>
+
+<!-- Empty state -->
+<view wx:if="{{isEmpty && !selectMode}}" class="empty-state">
+  <text class="empty-icon">📚</text>
+  <text class="empty-text">还没有账本，创建一个吧</text>
+  <view class="btn-primary" bindtap="onShowCreate">新建账本</view>
+</view>
+
+<!-- Book list -->
+<view class="book-list">
+  <!-- Header with manage button -->
+  <view wx:if="{{!isEmpty}}" class="list-header flex-between">
+    <text class="list-title">共 {{books.length}} 个账本</text>
+    <text class="manage-btn" bindtap="onToggleSelectMode">{{selectMode ? '取消' : '管理'}}</text>
+  </view>
+
+  <view
+    wx:for="{{books}}"
+    wx:key="id"
+    class="card book-card"
+    data-id="{{item.id}}"
+    data-name="{{item.name}}"
+    bindtap="onBookTap"
+    bindlongpress="onBookLongPress"
+  >
+    <view wx:if="{{selectMode}}" class="checkbox {{selectedIds[item.id] ? 'checkbox-checked' : ''}}">
+      <text wx:if="{{selectedIds[item.id]}}">✓</text>
+    </view>
+    <view class="book-info">
+      <view class="book-header flex-between">
+        <text class="book-name">{{item.name}}</text>
+        <text class="book-count">{{item.billCount}} 条</text>
+      </view>
+      <view class="book-totals">
+        <text wx:if="{{item.incomeStr !== '+¥0.00'}}" class="income">{{item.incomeStr}}</text>
+        <text wx:if="{{item.expenseStr !== '-¥0.00'}}" class="expense">{{item.expenseStr}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- FAB -->
+<view wx:if="{{!selectMode}}" class="fab" bindtap="onAddTap">
+  <text class="fab-icon">+</text>
+</view>
+
+<!-- Batch delete bar -->
+<view wx:if="{{selectMode}}" class="batch-bar">
+  <view class="btn-outline batch-cancel" bindtap="onToggleSelectMode">取消</view>
+  <text class="batch-count">已选 {{selectedCount}} 个</text>
+  <view class="btn-danger batch-delete {{selectedCount === 0 ? 'btn-disabled' : ''}}" bindtap="onBatchDelete">删除</view>
+</view>

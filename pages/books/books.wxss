@@ -1,0 +1,207 @@
+/* Create dialog */
+.create-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.create-dialog {
+  background: var(--card);
+  border-radius: 16rpx;
+  padding: 40rpx 32rpx 24rpx;
+  width: 600rpx;
+}
+
+.create-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+.create-input {
+  font-size: 30rpx;
+  padding: 20rpx;
+  border: 2rpx solid var(--border);
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.tag-label {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  margin-right: 8rpx;
+}
+
+.tag-chip {
+  font-size: 22rpx;
+  background: var(--bg);
+  color: var(--primary);
+  padding: 8rpx 18rpx;
+  border-radius: 20rpx;
+  margin: 4rpx 6rpx;
+  border: 2rpx solid var(--primary);
+}
+
+.create-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20rpx;
+}
+
+.create-btn {
+  padding: 16rpx 40rpx;
+  font-size: 28rpx;
+}
+
+/* Header */
+.list-header {
+  padding: 16rpx 28rpx;
+}
+
+.list-title {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.manage-btn {
+  font-size: 26rpx;
+  color: var(--primary);
+  padding: 4rpx 8rpx;
+}
+
+/* Book list */
+.book-list {
+  padding-bottom: 120rpx;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 28rpx 24rpx;
+}
+
+.book-info {
+  flex: 1;
+}
+
+.book-header {
+  margin-bottom: 12rpx;
+}
+
+.book-name {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.book-count {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.book-totals {
+  display: flex;
+  gap: 32rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.income { color: var(--income); }
+.expense { color: var(--expense); }
+
+/* Checkbox */
+.checkbox {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 3rpx solid var(--border);
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.checkbox-checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* FAB */
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.4);
+  z-index: 99;
+}
+
+.fab-icon {
+  font-size: 56rpx;
+  color: #fff;
+  line-height: 1;
+}
+
+/* Batch bar */
+.batch-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background: var(--card);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  border-top: 2rpx solid var(--border);
+  z-index: 100;
+}
+
+.batch-count {
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+.batch-cancel {
+  padding: 14rpx 28rpx;
+  font-size: 26rpx;
+}
+
+.batch-delete {
+  padding: 14rpx 28rpx;
+  font-size: 26rpx;
+}
+
+.btn-danger {
+  background-color: var(--expense);
+  color: #fff;
+  border-radius: 8rpx;
+}
+
+.btn-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
